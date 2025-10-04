@@ -1,1 +1,3 @@
-<img width="300" height="300" alt="image" src="https://github.com/user-attachments/assets/3133d44a-5c1c-4e19-9958-3cccd31b2a41" />
+## AGENTi: Application for Mass Spectrometry Ionization Divergence Detection
+<br /><img width="300" height="300" alt="image" src="https://github.com/user-attachments/assets/cd2216bc-9c74-4fd2-8312-58c8d88666b4" />
+

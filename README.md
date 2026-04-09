@@ -4,7 +4,3 @@
 <br /><img width="300" height="290" alt="image" src="https://github.com/user-attachments/assets/9111461e-fbc0-49e3-9688-ba858d3af74a" />
 
 
-#
-### Accessibility
- [<img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab">](https://colab.research.google.com/drive/14p_GJK2TCjhzehEJ9YqQT2x_rnyLMh3I?usp=sharing) <code style="color : grey">click here to access AGENTi online application.</code>
-<br />

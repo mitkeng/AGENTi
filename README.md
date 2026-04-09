@@ -14,7 +14,7 @@ You can feed the model data in two ways:
 
 ### 2. Automated Processing
 Once you run the script, the system performs these background steps:
-*   **Feature Extraction**: Converts the SMILES into 13 mathematical descriptors (like `radii_mass2` and `TPSA`).
+*   **Feature Extraction**: Converts the SMILES into 13 mathematical descriptors (like `VSA` and `TPSA`).
 *   **Neural Analysis**: Runs the data through three specialized models: an **Autoencoder**, an **Anomaly Model**, and a **Regression Model**.
 *   **Scoring**: Combines the model outputs into a final **A-Score**.
 

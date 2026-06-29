@@ -1,46 +1,67 @@
 [![python](https://img.shields.io/badge/Python-3.9-3776AB.svg?style=flat&logo=python&logoColor=white)](https://www.python.org) ![user](https://img.shields.io/badge/GoogleColab-grey?style=flat&logo=googlecolab) ![user](https://img.shields.io/badge/Chemodeling-App-yellow?) ![user](https://img.shields.io/badge/Userfriend-1.0-sgreen?) 
 
-## 🧪 AGENTi: Probing Ionization Fidelity
 
 <img width="1376" height="768" alt="image" src="https://github.com/user-attachments/assets/ee2f391f-b20b-45d9-b3aa-8e24fd4f4a40" />
 
 ### We try, so the community can optimize.
 ---
 
-## 🚀 How to Use AGENTi
+# AGENTi V3: Machine Learning Framework
+### Overview
+AGENTi V3 is a deployment package designed for deep-learning-based chemical analysis. It utilizes an ensemble of YDF Decision Forests and TensorFlow Autoencoder architectures to provide both regression scores (A-Score) and anomaly detection for chemical compounds provided in SMILES format.
 
-### 1. Choose Your Input
-You can feed the model data in two ways:
-*   **Single SMILES**: Provide a single string for a quick check (e.g., `CC(=O)Oc1ccccc1C(=O)O` for Aspirin).
-*   **Batch CSV**: Upload a `.csv` file containing a column named `SMILES_String` to process hundreds of molecules at once.
+### 1. Technical Requirements
+To ensure consistent results, the following environment is required:
+* **Python:** 3.9 - 3.12
+* **Primary Libraries:** `tensorflow`, `tensorflow-decision-forests`, `rdkit`, `scikit-learn`, `pandas`, `joblib`.
+* **Hardware:** Compatible with CPU-only environments (standard for many chemical informatics workflows).
 
-### 2. Automated Processing
-Once you run the script, the system performs these background steps:
-*   **Feature Extraction**: Converts the SMILES into 13 mathematical descriptors (like `VSA` and `TPSA`).
-*   **Neural Analysis**: Runs the data through three specialized models: an **Autoencoder**, an **Anomaly Model**, and a **Regression Model**.
-*   **Scoring**: Combines the model outputs into a final **A-Score**.
+### 2. Installation & Setup
 
-### 3. Review the Output
-The script generates a clean table with three key columns:
-*   **SMILE**: The molecule identifier.
-*   **A-Score**: The calculated risk value.
-*   **Is Anomalous**: A simple **Yes/No** based on whether the score exceeds your **1.40 threshold**.
+**Step 1: Download & Extract**
+Download `agenti_v3.zip` and extract its contents into your working directory.
 
----
-
-## 🛠️ Installation & Execution
-
-### **Quick Start (Linux/macOS)**
-Run the following commands in your terminal to set up the environment and run a test on Aspirin:
-
+**Step 2: Initialize Environment**
+You can use the automated setup script which handles the registration of kernels and all dependencies:
 ```bash
-# Clone the repository
-git clone https://github.com/mitkeng/AGENTi.git
-cd AGENTi
-
-# Install dependencies and download models
+# Give execution permissions and run the installer
 chmod +x setup.sh
 ./setup.sh
+```
+*Alternatively, manually install via pip: `pip install -r requirements.txt`*
 
-# Run the inference script
-python3 run_test.py
+### 3. Execution Guide
+
+#### A. Single Molecule Inference
+Use `agenti_run.py` to analyze a single compound. This script returns the A-Score and a flag indicating if the molecule is considered an anomaly.
+```bash
+python3 agenti_run.py --smiles "CC(=O)OC1=CC=CC=C1C(=O)O"
+```
+
+#### B. High-Throughput Batch Processing
+For processing multiple molecules simultaneously, use `agenti_v3_batch_production.py`. 
+
+**From Text Files:**
+Input should be a `.txt` file with one SMILES string per line.
+```bash
+python3 agenti_v3_batch_production.py --input my_compounds.txt --output results.csv
+```
+
+**From CSV Files:**
+Specify the column name containing the SMILES strings.
+```bash
+python3 agenti_v3_batch_production.py --input library.csv --column SMILES_STR --output results.csv
+```
+
+### 4. Package Components
+| File/Folder | Description |
+| :--- | :--- |
+| `agenti_run.py` | The main entry point for single inference tasks. |
+| `agenti_v3_batch_production.py` | Optimized script for large datasets (TXT/CSV). |
+| `agentI_reg_v3_minmax/` | YDF Decision Forest weights for regression scoring. |
+| `agentI_anom_v3_minmax/` | YDF Decision Forest weights for anomaly classification. |
+| `autoencoder_v3_minmax.keras` | Trained TF Autoencoder model for feature reconstruction. |
+| `scaler_v3_minmax.pkl` | Serialized normalization parameters for input features. |
+
+### 5. Troubleshooting
+If you encounter a `RuntimeError` regarding unregistered kernels, ensure that `tensorflow_decision_forests` is installed and imported at the top of your execution environment. The provided scripts are pre-configured to handle this automatically.

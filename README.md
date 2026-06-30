@@ -20,7 +20,11 @@ To ensure consistent results, the following environment is required:
 
 **Step 1: Download & Extract**
 Download `agenti_v3.zip` and extract its contents into your working directory.
+Recommend running the following command in your terminal to automatically download, extract, and clean up the files in your current working directory:
 
+```bash
+wget -qO- https://githubusercontent.com > agenti_v3.zip && unzip -q agenti_v3.zip && rm agenti_v3.zip
+```
 **Step 2: Initialize Environment**
 You can use the automated setup script which handles the registration of kernels and all dependencies:
 ```bash

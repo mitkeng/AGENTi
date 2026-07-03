@@ -69,3 +69,7 @@ python3 agenti_v3_batch_production.py --input library.csv --column SMILES_STR --
 
 ### 5. Troubleshooting
 If you encounter a `RuntimeError` regarding unregistered kernels, ensure that `tensorflow_decision_forests` is installed and imported at the top of your execution environment. The provided scripts are pre-configured to handle this automatically.
+
+### 6. Citation
+Mithony Keng, Kenneth M Merz. AGENTi: APCI-ESI Analyte Ionization Fidelity Pre-Screening Workflow using Multimodel Inference. ChemRxiv. 02 July 2026.
+DOI: https://doi.org/10.26434/chemrxiv.15005565/v1
